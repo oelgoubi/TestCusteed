@@ -6,8 +6,8 @@
     <style type="text/css">
         #app{
           color: black;
-          height:300px;
-          width: 300px;
+          height:400px;
+          width: 400px;
           padding: 15px;
           background-color: burlywood;
           margin: auto;
@@ -23,9 +23,9 @@
     </style>
 </head>
 <body>
-    <div id="app" style="user-select: none;">
+    <div id="app" >
         Open the Console (Development tools) <br/>
-        <p>Temps de réaction : {{reactionTime}} ms</p>   
+        <p>Temps de réaction : {{reactionTime}} ms</p>
         <button @click="handleClick">ClickMe</button>
     </div>
     <script>
@@ -35,7 +35,6 @@
                 const duck = "       ..---..                          .'  _    `.                    __..'  (o)    :                   `..__          ;                        `.       /                           ;      `..---...___              .'                   `~-. .-')    .                         ' _.'   :                           :      \                           '       +                         J         `._                   _.'             `~--....___...---~'        ";
                 return {
                     duck,
-                    htmlDuck:'',
                     index: null,
                     reactionTime : 350
                 }
@@ -60,10 +59,7 @@
                     for (let i = 0; i < this.duck.length; i += 35) {
                         // Print in console
                         console.log(`${this.duck.slice(i, i + 35)}`)
-                        // Print in UI
-                        temp += `${this.duck.slice(i, i + 35)}<br/>`
                     }
-                    this.htmlDuck = temp
                 },
                 replace(newChar) {
                     this.duck = this.setCharAt(this.duck, this.index, newChar)
