@@ -1,5 +1,6 @@
 var x = "       ..---..                          .'  _    `.                    __..'  (o)    :                   `..__          ;                        `.       /                           ;      `..---...___              .'                   `~-. .-')    .                         ' _.'   :                           :      \                           '       +                         J         `._                   _.'             `~--....___...---~'        ";
 
+// Let's Code a function that replace a char within a string 
 function replace(data) {  
     return data.split("").map(function(s) {
        return s.split('o').join('_');
