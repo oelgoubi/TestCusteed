@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+  <div id="app" style="user-select: none;">
+  </div>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data() {
+        const duck = "       ..---..                          .'  _    `.                    __..'  (o)    :                   `..__          ;                        `.       /                           ;      `..---...___              .'                   `~-. .-')    .                         ' _.'   :                           :      \                           '       +                         J         `._                   _.'             `~--....___...---~'        ";        
+        return {
+          duck
+        }
+      },
+      mounted() { 
+          // Print Duck on mounted
+          this.printDuck();
+      },
+      computed: { 
+      },
+      methods: { 
+          printDuck(){
+            for(let i=0;i<this.duck.length;i+=35){
+                console.log(this.duck.slice(i,i+35))
+            }
+          }
+      }
+    })
+  </script>
+</body>
+</html>

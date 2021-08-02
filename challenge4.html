@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+    <div id="app" style="user-select: none;">
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data() {
+                const duck = "       ..---..                          .'  _    `.                    __..'  (o)    :                   `..__          ;                        `.       /                           ;      `..---...___              .'                   `~-. .-')    .                         ' _.'   :                           :      \                           '       +                         J         `._                   _.'             `~--....___...---~'        ";
+                return {
+                    duck,
+                    index: null
+                }
+            },
+            mounted() {
+                // Print Duck on mounted
+                this.printDuck();
+                // Get index of the eye
+                this.index = this.duck.indexOf('o', 0)
+                // Blink Eye
+                this.blinkEye();
+            },
+            computed: {
+            },
+            methods: {
+                setCharAt(str, index, chr) {
+                    if (index > str.length - 1) return str;
+                    return str.substring(0, index) + chr + str.substring(index + 1);
+                },
+                printDuck() {
+                    for (let i = 0; i < this.duck.length; i += 35) {
+                        console.log(this.duck.slice(i, i + 35))
+                    }
+                },
+                replace(newChar) {
+                    this.duck = this.setCharAt(this.duck, this.index, newChar)
+                },
+                blinkEye() {
+                    if (this.duck.includes('o')) {
+                        setTimeout(() => {
+                            this.replace('_');
+                            this.printDuck();
+                            this.blinkEye()
+                        }, 350)
+                    } else if (this.duck.includes('_')) {
+                        setTimeout(() => {
+                            this.replace('o')
+                            this.printDuck();
+                            this.blinkEye()
+                        },((Math.random() *2) + 1)*1000)
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://unpkg.com/vue"></script>
+    <style type="text/css">
+        #app{
+          color: black;
+          height:300px;
+          width: 300px;
+          padding: 15px;
+          background-color: burlywood;
+          margin: auto;
+          justify-content: center;
+          text-align: center;
+          position: relative;
+        }
+        button{
+            position: absolute;
+            bottom : 10px;
+            left: 130px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app" style="user-select: none;">
+        Open the Console (Development tools) <br/>
+        <p>Temps de réaction : {{reactionTime}} ms</p>
+        <button @click="handleClick">ClickMe</button>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data() {
+                const duck = "       ..---..                          .'  _    `.                    __..'  (o)    :                   `..__          ;                        `.       /                           ;      `..---...___              .'                   `~-. .-')    .                         ' _.'   :                           :      \                           '       +                         J         `._                   _.'             `~--....___...---~'        ";
+                return {
+                    duck,
+                    htmlDuck:'',
+                    index: null,
+                    reactionTime : 350
+                }
+            },
+            mounted() {
+                // Print Duck on mounted
+                this.printDuck();
+                // Get index of the eye
+                this.index = this.duck.indexOf('o', 0)
+                // Blink Eye
+                this.blinkEye();
+            },
+            computed: {
+            },
+            methods: {
+                setCharAt(str, index, chr) {
+                    if (index > str.length - 1) return str;
+                    return str.substring(0, index) + chr + str.substring(index + 1);
+                },
+                printDuck() {
+                    for (let i = 0; i < this.duck.length; i += 35) {
+                        // Print in console
+                        console.log(`${this.duck.slice(i, i + 35)}`)
+                        // Print in UI
+                        this.htmlDuck += `${this.duck.slice(i, i + 35)}<br/>`
+                    }
+                },
+                replace(newChar) {
+                    this.duck = this.setCharAt(this.duck, this.index, newChar)
+                },
+                blinkEye() {
+                    if (this.duck.includes('o')) {
+                        setTimeout(() => {
+                            this.replace('_');
+                            this.printDuck();
+                            this.blinkEye()
+                        }, this.reactionTime)
+                    } else if (this.duck.includes('_')) {
+                        setTimeout(() => {
+                            this.replace('o')
+                            this.printDuck();
+                            this.blinkEye()
+                        },((Math.random() *2) + 1)*1000)
+                    }
+                },
+                handleClick(){
+                    this.duck.includes('o') ? this.reactionTime-= 10 : this.reactionTime+= 10
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

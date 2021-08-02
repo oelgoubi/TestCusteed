@@ -1,0 +1,9 @@
+# Author : OTHMANE ELGOUBI 
+# Company : Custeed
+
+# To Run the 1st and the second challenge 1 and 2
+with Node :
+$ node challenge1.js
+
+# To see the execution of the the chalenge 3,4 and 5 
+Please open the development tools
