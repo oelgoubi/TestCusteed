@@ -1,4 +1,4 @@
-const input = ["Friday", "Sunday",'Tuesday', 'Wednesday'];
+const input = ["Friday", "Sunday",'Tuesday', 'Wednesday',"Monday"];
 const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
 
