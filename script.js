@@ -31,13 +31,6 @@ const getDaysOfOpening = (input) => {
         indexes.splice(i + 1, 0, "x")
       }
     }
-
-    for (let i = 0; i < (indexes.length - 1); i++) {
-      if (indexes[i + 1] - indexes[i] > 1) {
-
-        indexes.splice(i + 1, 0, "x")
-      }
-    }
     // Split with 'x' to form sub arrays
     indexes = indexes.join('').split('x');
 
